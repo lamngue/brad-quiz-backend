@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
 });
 
 const corsConfig = {
-    origin: 'https://brad-quiz.herokuapp.com',
+    origin: ['https://brad-quiz.herokuapp.com', 'http://localhost:3001'],
     allowedHeaders: ['*']
 }
 
