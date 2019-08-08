@@ -51,10 +51,6 @@ app.post('/register', (req,res,next) => {
             });
             return;
         }
-        else if(results.length === 0){
-            res.json("Wrong email!");
-            return;
-        }
         else{
             //register user
             bcrypt.genSalt(10, (err, salt) => {
