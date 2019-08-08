@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
+const app = express();
+
 const connection = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USER,
@@ -12,10 +14,12 @@ const connection = mysql.createConnection({
     database: process.env.DATABASE
 });
 
-const app = express();
+const corsConfig = {
+    origin: 'https://brad-quiz.herokuapp.com',
+    allowedHeaders: ['*']
+}
 
-
-app.use(cors());
+app.use(cors(corsConfig));
 app.use(bodyParser.json())
 cors({ redentials: true, origin: true });
 
