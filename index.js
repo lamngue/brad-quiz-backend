@@ -3,12 +3,13 @@ const cors = require('cors');
 const mysql = require("mysql");
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'l4md3pz4i',
-    database: 'brad_quiz'
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
 });
 
 const app = express();
