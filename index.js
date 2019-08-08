@@ -18,7 +18,18 @@ app.use(cors());
 app.use(bodyParser.json())
 cors({ redentials: true, origin: true });
 
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
+
+
 app.post('/register', (req,res,next) => {
+    console.log("registering");
     let {email, password} = req.body;
     if (!email || !password) {
         return res.status(404).send('Please type email and password');
